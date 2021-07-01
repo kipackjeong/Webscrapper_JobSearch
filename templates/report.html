@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Result</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/report.css') }}" />
+  </head>
+
+  <body>
+    <h2>Found {{resultsNumber}} results for {{searchingBy}}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">Title</th>
+          <th colspan="2">Company</th>
+          <th colspan="2">Location</th>
+          <th colspan="2">Salary</th>
+          <th colspan="2">Summary</th>
+          <th colspan="2">Date</th>
+          <th colspan="2">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for job in jobs %}
+        <tr>
+          <td colspan="2">{{job.title}}</td>
+          <td colspan="2">{{job.company}}</td>
+          <td colspan="2">{{job.location}}</td>
+          <td colspan="2">{{job.salary}} </td>
+          <td colspan="2">{{job.summary}}</td>
+          <td colspan="2">{{job.date}}</td>
+          <td colspan="2">
+            <a href="{{job.apply_url}}" target="_blank">{{job.apply_url}}</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
